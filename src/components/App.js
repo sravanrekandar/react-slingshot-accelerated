@@ -1,23 +1,24 @@
 /* eslint-disable import/no-named-as-default */
-import { NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from 'react-router-dom';
 
-import AboutPage from "./AboutPage";
-import FuelSavingsPage from "./containers/FuelSavingsPage";
-import HomePage from "./HomePage";
-import NotFoundPage from "./NotFoundPage";
-import PropTypes from "prop-types";
-import React from "react";
-import { hot } from "react-hot-loader";
+import React from 'react';
+import { hot } from 'react-hot-loader';
+import AboutPage from './AboutPage';
+import FuelSavingsPage from './containers/FuelSavingsPage';
+import HomePage from './HomePage';
+import NotFoundPage from './NotFoundPage';
+import Header from './Header';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
 // component at the top-level.
 
-class App extends React.Component {
+class App extends React.PureComponent {
   render() {
     const activeStyle = { color: 'blue' };
     return (
       <div>
+        <Header />
         <div>
           <NavLink exact to="/" activeStyle={activeStyle}>Home</NavLink>
           {' | '}
@@ -35,9 +36,5 @@ class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  children: PropTypes.element
-};
 
 export default hot(module)(App);

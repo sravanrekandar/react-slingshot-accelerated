@@ -1,4 +1,5 @@
-import {roundNumber} from './math';
+/* eslint-disable no-use-before-define */
+import { roundNumber } from './math';
 
 export function getCurrencyFormattedNumber(value) {
   if (value === null) {

@@ -1,6 +1,7 @@
-import {SAVE_FUEL_SAVINGS, CALCULATE_FUEL_SAVINGS} from '../constants/actionTypes';
-import {necessaryDataIsProvidedToCalculateSavings, calculateSavings} from '../utils/fuelSavings';
+/* eslint-disable max-len */
 import objectAssign from 'object-assign';
+import { SAVE_FUEL_SAVINGS, CALCULATE_FUEL_SAVINGS } from '../constants/actionTypes';
+import { necessaryDataIsProvidedToCalculateSavings, calculateSavings } from '../utils/fuelSavings';
 import initialState from './initialState';
 
 // IMPORTANT: Note that with Redux, state should NEVER be changed.
@@ -14,8 +15,9 @@ export default function fuelSavingsReducer(state = initialState.fuelSavings, act
   switch (action.type) {
     case SAVE_FUEL_SAVINGS:
       // For this example, just simulating a save by changing date modified.
-      // In a real app using Redux, you might use redux-thunk and handle the async call in fuelSavingsActions.js
-      return objectAssign({}, state, {dateModified: action.dateModified});
+      // In a real app using Redux, you might use redux-thunk and handle
+      // the async call in fuelSavingsActions.js
+      return objectAssign({}, state, { dateModified: action.dateModified });
 
     case CALCULATE_FUEL_SAVINGS:
       newState = objectAssign({}, state);

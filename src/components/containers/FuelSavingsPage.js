@@ -1,7 +1,9 @@
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/fuelSavingsActions';
 import FuelSavingsForm from '../FuelSavingsForm';
 
@@ -10,7 +12,7 @@ export class FuelSavingsPage extends React.Component {
     this.props.actions.saveFuelSavings(this.props.fuelSavings);
   }
 
-  calculateFuelSavings = e => {
+  calculateFuelSavings = (e) => {
     this.props.actions.calculateFuelSavings(this.props.fuelSavings, e.target.name, e.target.value);
   }
 
@@ -27,22 +29,22 @@ export class FuelSavingsPage extends React.Component {
 
 FuelSavingsPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  fuelSavings: PropTypes.object.isRequired
+  fuelSavings: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
-    fuelSavings: state.fuelSavings
+    fuelSavings: state.fuelSavings,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch),
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(FuelSavingsPage);

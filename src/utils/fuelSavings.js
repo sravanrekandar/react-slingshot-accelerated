@@ -1,5 +1,5 @@
-import {roundNumber} from './math';
-import {getCurrencyFormattedNumber} from './numberFormat';
+import { roundNumber } from './math';
+import { getCurrencyFormattedNumber } from './numberFormat';
 
 // Private
 function calculateMonthlyCost(milesDrivenPerMonth, ppg, mpg) {
@@ -29,9 +29,15 @@ export function calculateSavingsPerMonth(settings) {
     return 0;
   }
 
-  const milesDrivenPerMonth = calculateMilesDrivenPerMonth(settings.milesDriven, settings.milesDrivenTimeframe);
-  const tradeFuelCostPerMonth = calculateMonthlyCost(milesDrivenPerMonth, settings.tradePpg, settings.tradeMpg);
-  const newFuelCostPerMonth = calculateMonthlyCost(milesDrivenPerMonth, settings.newPpg, settings.newMpg);
+  const milesDrivenPerMonth = calculateMilesDrivenPerMonth(
+    settings.milesDriven, settings.milesDrivenTimeframe,
+  );
+  const tradeFuelCostPerMonth = calculateMonthlyCost(
+    milesDrivenPerMonth, settings.tradePpg, settings.tradeMpg,
+  );
+  const newFuelCostPerMonth = calculateMonthlyCost(
+    milesDrivenPerMonth, settings.newPpg, settings.newMpg,
+  );
   const savingsPerMonth = tradeFuelCostPerMonth - newFuelCostPerMonth;
 
   return roundNumber(savingsPerMonth, 2);
@@ -51,6 +57,6 @@ export function calculateSavings(settings) {
   return {
     monthly: getCurrencyFormattedNumber(monthlySavings),
     annual: getCurrencyFormattedNumber(monthlySavings * 12),
-    threeYear: getCurrencyFormattedNumber(monthlySavings * 12 * 3)
+    threeYear: getCurrencyFormattedNumber(monthlySavings * 12 * 3),
   };
 }
