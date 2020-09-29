@@ -118,6 +118,8 @@ export default {
           }, {
             loader: 'sass-loader',
             options: {
+              // eslint-disable-next-line global-require
+              implementation: require('sass'),
               sassOptions: {
                 includePaths: [
                   path.resolve(__dirname, 'src'),
